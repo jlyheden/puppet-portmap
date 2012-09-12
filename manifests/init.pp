@@ -61,7 +61,6 @@ class portmap ( $ensure = undef,
         ensure => running,
         enable => true,
         hasrestart => true,
-        provider => $portmap::params::service_provider,
         require => Package[$portmap::params::package_name]
     }
 
