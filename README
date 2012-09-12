@@ -1,0 +1,18 @@
+# portmap
+
+This is the portmap module. Only created with Debuntu in mind but should be trivial enough to add a distro checker in portmap::params
+
+# Sample usage
+<pre>
+include portmap
+include portmap::disable (to stop service)
+include portmap::absent (to remove package / service)
+</pre>
+
+Or if you want to customize settings
+<pre>
+class { "portmap": 
+  bind => "127.0.0.1",
+  ensure_version => latest
+}
+</pre>

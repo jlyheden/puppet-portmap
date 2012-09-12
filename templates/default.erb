@@ -1,0 +1,11 @@
+# MANAGED BY PUPPET
+<%- 
+  o = []
+  o.concat([ '-i', bind]) unless bind == :undef
+  o.concat([ '-t', chroot]) unless chroot == :undef
+  o.concat([ '-u', user, '-g', group]) unless user == :undef or group == :undef
+
+  if o.length > 0
+    -%>OPTIONS="<%= o.join(' ') %>"<%-
+  end
+-%>

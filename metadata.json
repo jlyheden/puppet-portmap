@@ -1,0 +1,23 @@
+{
+  "name": "stanlee-portmap",
+  "author": "Johan Lyheden",
+  "description": "This is the portmap module. Only created with Debuntu in mind but should be trivial enough to add a distro checker in portmap::params",
+  "license": "Apache License, Version 2.0",
+  "project_page": "https://github.com/stanlee/puppet-portmap",
+  "source": "https://github.com/stanlee/puppet-portmap",
+  "summary": "This is the portmap module",
+  "version": "0.0.1",
+  "checksums": {
+    "Modulefile": "ee75176149a97dd1439adcd7c026bf5d",
+    "README": "550252c3677086384da217bcce6e80ac",
+    "manifests/absent.pp": "08ce5f2c71fe0aeccafebf6b0f0f23aa",
+    "manifests/disable.pp": "8e241c1b5a8e656f0cfb76ae30ad6c80",
+    "manifests/init.pp": "1ecca6d816a7919274d3a95553bfc72d",
+    "manifests/params.pp": "2d1cd7c6c87b9cc9483cde5f6718ea58",
+    "spec/spec.opts": "a600ded995d948e393fbe2320ba8e51c",
+    "spec/spec_helper.rb": "ca19ec4f451ebc7fdb035b52eae6e909",
+    "templates/default.erb": "c93adb0a4e64fef8482106159397b2e6",
+    "tests/init.pp": "d58e2abb69ca73db9cba378f820b6fdf"
+  },
+  "dependencies": []
+}
