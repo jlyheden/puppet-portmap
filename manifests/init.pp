@@ -44,35 +44,36 @@ class portmap ( $ensure = undef,
 	            $chroot = undef,
 	            $ensure_version = undef ) {
   
-  include portmap::params
+    include portmap::params
   
-  if $ensure != undef {
-  	warning("Use of :ensure parameter is deprecated, include portmap::disable or portmap::absent if you want to decommission this module, or use :auto_update => true to keep portmap up to date")
-  }
-  
-  package { $portmap::params::package_name:
-  	ensure => $ensure_version ? {
-  		undef => present,
-  		default => $ensure_version
-  	}
-  }
+    if $ensure != undef {
+        warning("Use of :ensure parameter is deprecated, include portmap::disable or portmap::absent if you want to decommission this module, or use :auto_update => true to keep portmap up to date")
+    }
 
-  service { $portmap::params::service_name:
-  	ensure => running,
-  	enable => true,
-  	hasrestart => true,
-  	require => Package[$portmap::params::package_name]
-  }
+    package { $portmap::params::package_name:
+        ensure => $ensure_version ? {
+            undef => present,
+            default => $ensure_version
+        }
+    }
 
-  case $::operatingsystem {
-  	default: {
-		file { $portmap::params::daemon_settings:
-			ensure => present,
-			content => template("portmap/default.erb"),
-			require => Package[$portmap::params::package_name],
-			notify => Service[$portmap::params::service_name]
-		}
-  	}
-  }
+    service { $portmap::params::service_name:
+        ensure => running,
+        enable => true,
+        hasrestart => true,
+        provider => $portmap::params::service_provider,
+        require => Package[$portmap::params::package_name]
+    }
+
+    case $::operatingsystem {
+        default: {
+            file { $portmap::params::daemon_settings:
+                ensure => present,
+                content => template("portmap/default.erb"),
+                require => Package[$portmap::params::package_name],
+                notify => Service[$portmap::params::service_name]
+            }
+        }
+    }
 
 }
