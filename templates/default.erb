@@ -6,6 +6,7 @@
   o.concat([ '-u', user, '-g', group]) unless user == :undef or group == :undef
 
   if o.length > 0
-    -%>OPTIONS="<%= o.join(' ') %>"<%-
-  end
--%>
+    %>OPTIONS="<%= o.join(' ') %>"
+<%- else
+    %>#OPTIONS=""
+<%- end -%>
